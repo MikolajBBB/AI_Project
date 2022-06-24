@@ -1,6 +1,7 @@
 from random import randint, random
 from tkinter import *
 from tkinter import ttk
+import time
 
 import numpy as np
 import tk
@@ -117,6 +118,7 @@ def DifferentialEvolution(populationSize: int, generations: int,xbound,ybound,fu
     subplot.plot(generations_AvgFitness,label="Avarage Minimum", color="black")
     figure.supxlabel("Generation \n| Black-GlobalMinimum|\n|Red-Avarage Minimum|",size="5")
     figure.supylabel("Fitness",size=5)
+    print("\nMinimum Globalne: "+str(generations_GlobMinFitness[len(generations_GlobMinFitness) - 1]))
 
 
 
@@ -139,13 +141,29 @@ def generatePlot():
     b = int(population_input.get())
 
     if(clicked.get() == "Algorytm Genetyczny" and clicked2.get() == "EggHolder"):
+        start = time.time()
         DifferentialEvolution(a, b,-512,512,eggholder)
+        end =time.time()
+        print("Algorytm Genetyczny - Eggholder | Czas : "+str(end-start))
+        print("Generacje: " + str(a) + "|Populacje: " + str(b))
     elif(clicked.get() == "Algorytm Genetyczny" and clicked2.get() == "SCHAFFER FUNCTION N. 2"):
+        start = time.time()
         DifferentialEvolution(a,b,-100,100,schaffer)
+        end =time.time()
+        print("Algorytm Genetyczny - SCHAFFER FUNCTION N. 2 | Czas : "+str(end-start))
+        print("Generacje: " + str(a) + "|Populacje: " + str(b))
     elif(clicked.get() == "BatAlgorithm" and clicked2.get() == "SCHAFFER FUNCTION N. 2"):
+        start = time.time()
         bat(a,b,app,clicked2.get())
+        end =time.time()
+        print("BatAlgorithm - SCHAFFER FUNCTION N. 2 | Czas : "+str(end-start))
+        print("Generacje: " + str(a) + "|Populacje: " + str(b))
     elif(clicked.get() == "BatAlgorithm" and clicked2.get() == "EggHolder"):
+        start = time.time()
         bat(a,b,app,clicked2.get())
+        end =time.time()
+        print("BatAlgorithm - EggHolder | Czas : "+str(end-start))
+        print("Generacje: " + str(a) + "|Populacje: " + str(b))
 
 
 
